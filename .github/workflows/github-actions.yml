@@ -1,0 +1,32 @@
+name: GraalVM Native Image builds
+on: push
+#  schedule:
+#    - cron: '00 10 * * MON'  # At 10:00 Monday
+jobs:
+  build:
+    name: Native Micronaut on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-14, ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: graalvm/setup-graalvm@v1
+        with:
+          java-version: "24"
+          distribution: "graalvm"
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          native-image-job-reports: "true"
+          native-image-enable-sbom: "true"
+
+      - name: Build and run a Native Micronaut app
+        run: |
+          mvn --no-transfer-progress package -Dpackaging=native-image
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: demo-${{ matrix.os }}
+          path: |
+            target/library
