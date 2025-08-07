@@ -45,3 +45,8 @@ public class NativeImageConfig {
 }
 ```
 
+The syntax for working with the agent:
+```shell
+java -agentlib:native-image-agent -jar ./target/demo.jar
+```
+
