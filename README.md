@@ -1,5 +1,8 @@
 # Native Micronaut 👩‍🚀
 
+[![GitHub Actions](https://github.com/alina-yur/native-micronaut-reflection/actions/workflows/github-actions.yml/badge.svg)](https://github.com/alina-yur/native-micronaut-reflection/actions) [![Known Vulnerabilities](https://snyk.io/test/github/alina-yur/native-micronaut-reflection/badge.svg)](https://snyk.io/test/github/alina-yur/native-micronaut-reflection)
+
+
 ## Getting Started
 
 Go to [micronaut.io/launch](https://micronaut.io/launch/) and generate your project. You might want to pay attention to defaults — I chose latest Java, Maven, and JUnit. For the sake of this project, our demo will be called `library`.
