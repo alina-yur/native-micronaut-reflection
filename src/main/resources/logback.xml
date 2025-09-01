@@ -1,0 +1,22 @@
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Keep most of Micronaut quiet -->
+    <logger name="io.micronaut" level="WARN"/>
+    <logger name="io.netty" level="WARN"/>
+
+    <!-- Enable startup info only -->
+    <logger name="io.micronaut.runtime.Micronaut" level="INFO"/>
+    <logger name="io.micronaut.web.server" level="INFO"/>
+
+    <!-- Your own app logs -->
+    <logger name="com.example" level="INFO"/>
+
+    <root level="WARN">
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>
