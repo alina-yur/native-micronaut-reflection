@@ -122,6 +122,46 @@
   </build>
   <profiles>
     <profile>
+      <id>dev</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.graalvm.buildtools</groupId>
+            <artifactId>native-maven-plugin</artifactId>
+            <configuration>
+              <imageName>demo-dev</imageName>
+              <buildArgs>
+                <buildArg>-Ob</buildArg>
+                <buildArg>--emit=build-report</buildArg>
+              </buildArgs>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <id>production</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.graalvm.buildtools</groupId>
+            <artifactId>native-maven-plugin</artifactId>
+            <configuration>
+              <imageName>demo-production</imageName>
+              <buildArgs>
+                <buildArg>--gc=G1</buildArg>
+                <buildArg>--pgo=${project.basedir}/default.iprof</buildArg>
+                <buildArg>-march=native</buildArg>
+              </buildArgs>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+
+    <profile>
       <id>report</id>
       <build>
         <plugins>
@@ -174,7 +214,7 @@
         </plugins>
       </build>
     </profile>
-            <profile>
+    <profile>
       <id>pie</id>
       <build>
         <plugins>
@@ -192,7 +232,7 @@
         </plugins>
       </build>
     </profile>
-      <profile>
+    <profile>
       <id>pie-rcp</id>
       <build>
         <plugins>
