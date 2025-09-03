@@ -6,7 +6,7 @@ import io.micronaut.http.annotation.Get;
 @Controller
 public class ExceptionController {
 
-    @Get("/error")
+    @Get("/error1")
     public String throwError() {
         throw new RuntimeException("Something went wrong!");
     }
